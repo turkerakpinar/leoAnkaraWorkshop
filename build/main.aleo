@@ -1,4 +1,4 @@
-program templateankara.aleo;
+program turker1234.aleo;
 
 record token:
     owner as address.private;
@@ -13,7 +13,7 @@ function mint_public:
     input r0 as address.public;
     input r1 as u64.public;
     async mint_public r0 r1 into r2;
-    output r2 as templateankara.aleo/mint_public.future;
+    output r2 as turker1234.aleo/mint_public.future;
 
 finalize mint_public:
     input r0 as address.public;
@@ -34,7 +34,7 @@ function transfer_public:
     input r0 as address.public;
     input r1 as u64.public;
     async transfer_public self.caller r0 r1 into r2;
-    output r2 as templateankara.aleo/transfer_public.future;
+    output r2 as turker1234.aleo/transfer_public.future;
 
 finalize transfer_public:
     input r0 as address.public;
@@ -59,17 +59,17 @@ function transfer_private:
     output r5 as token.record;
 
 
-function transfer_private_to_public:
+function transfer_priv_to_pub:
     input r0 as token.record;
     input r1 as address.public;
     input r2 as u64.public;
     sub r0.amount r2 into r3;
     cast r0.owner r3 into r4 as token.record;
-    async transfer_private_to_public r1 r2 into r5;
+    async transfer_priv_to_pub r1 r2 into r5;
     output r4 as token.record;
-    output r5 as templateankara.aleo/transfer_private_to_public.future;
+    output r5 as turker1234.aleo/transfer_priv_to_pub.future;
 
-finalize transfer_private_to_public:
+finalize transfer_priv_to_pub:
     input r0 as address.public;
     input r1 as u64.public;
     get.or_use account[r0] 0u64 into r2;
@@ -77,15 +77,15 @@ finalize transfer_private_to_public:
     set r3 into account[r0];
 
 
-function transfer_public_to_private:
+function transfer_pub_to_priv:
     input r0 as address.private;
-    input r1 as u64.private;
+    input r1 as u64.public;
     cast r0 r1 into r2 as token.record;
-    async transfer_public_to_private self.caller r1 into r3;
+    async transfer_pub_to_priv self.caller r1 into r3;
     output r2 as token.record;
-    output r3 as templateankara.aleo/transfer_public_to_private.future;
+    output r3 as turker1234.aleo/transfer_pub_to_priv.future;
 
-finalize transfer_public_to_private:
+finalize transfer_pub_to_priv:
     input r0 as address.public;
     input r1 as u64.public;
     get.or_use account[r0] 0u64 into r2;
